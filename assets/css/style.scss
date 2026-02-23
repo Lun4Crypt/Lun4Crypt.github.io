@@ -5,3 +5,12 @@
   --link-color: #22d3ee;
   --btn-bg: #1e293b;
 }
+.post-preview {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.post-preview:hover {
+  transform: translateY(-5px);
+}
