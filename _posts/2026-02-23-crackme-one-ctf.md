@@ -6,3 +6,15 @@ tags: [crackme, reverse, one-ctf]
 image:
   path: /assets/img/221804609.png
 ---
+
+## 🔍 Challenge Overview
+
+- Name: CrackMeOne
+- Category: Reverse
+- Difficulty: Easy
+
+---
+
+## 🧠 Phân tích
+
+Khi chạy file ta thấy chương trình yêu cầu nhập password...
