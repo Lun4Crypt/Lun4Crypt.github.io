@@ -58,6 +58,7 @@ Nó đơn giản chỉ là ghi giá trị vào một biến trong struct của p
 Trong hàm ```sub_140003860```, nó cũng truyền `1`.
 => Kết quả là khi nhấn Play, chương trình đang phát ngược nhạc và bật pitch effect => âm thanh bị hỏng
 Vậy ý tưởng ở đây để cho âm thanh chạy đúng và lấy được flag thì ta chỉ cần patch giá trị truyền vào từ 1 -> 0 ở cả 2 hàm
+#### Patch chương trình
 Trước:
 ```asm
 mov     dl, 1
@@ -81,3 +82,6 @@ lưu lại và chạy lại chương trình mà mình đã patch thì ta sẽ l�
 ```
 CMO{y0u_g0t_r1ckr0ll3d}
 ```
+
+# Connected
+
