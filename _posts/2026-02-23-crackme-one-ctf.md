@@ -2,7 +2,7 @@
 title: "CrackMeOne CTF 2026"
 date: 2026-02-23 20:00:00 +0700
 categories: [Reverse]
-tags: [ctf, reverse, crackme]
+tags: [ctf, reverse]
 image:
   path: /assets/img/221804609.png
 ---
