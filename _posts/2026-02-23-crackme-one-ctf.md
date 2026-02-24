@@ -7,8 +7,8 @@ image:
   path: /assets/img/221804609.png
 ---
 
-# RecordPlayer 
-## Tổng quan
+## RecordPlayer 
+### Tổng quan
 
 Đây là 1 challenge khá thú vị với mình, khi chạy chương trình ta thấy giao diện của 1 trình phát nhạc. Khi nhấn **Play**, chương trình phát một file WAV được nhúng trong resource. Tuy nhiên âm thanh phát ra bị biến dạng. Nhiệm vụ của ta là phải fix sao cho âm thanh được phát đúng và lấy flag. Bài này thì có khá là nhiều hướng giải, nhưng mà mình lười nên mình chỉ giải theo 1 cách và cũng là cách mà mình nghĩ nhanh nhất để solve bài này ><
 
@@ -19,7 +19,7 @@ image:
 Để ý kĩ hint của tác giả thì mình biết được rằng cả 2 công tắc trên giao diện đều bị hỏng, và mình phải sửa 2 công tắc này hoạt động.
 Mình phân tích chương trình bằng IDA, tìm đến hàm xử lý 2 công tắc này
 Sau 7749 lần ngồi tìm và đọc code đến khùng =))) thì mình tìm thấy hàm ```sub_140003860``` là hàm xử lý các nút bấm giao diện
-```C
+```c
 case 1001:
       sub_140003C20((void *)(a1 + 88), &unk_14000665A, 0);
       v4 = *(_QWORD *)(a1 + 80);
@@ -38,7 +38,7 @@ case 1001:
       }
 ```
 Ở đây mình thấy có 2 hàm xử lý 2 công tắc như ở hint đã đề cập là hàm ```sub_140003A20``` và ``` sub_140003A00```, mình sẽ phân tích sâu hơn 2 hàm này để xem chúng được xử lý như nào
-#### Phân tích hàm sub_140003A00
+### Phân tích hàm sub_140003A00
 Quan sát hàm ta thấy hàm thực hiện biến đổi giá trị từ `0/1` thành `+1/-1`
 ```c
 result = 2 * (a2 ^ 1u) - 1;
@@ -48,7 +48,7 @@ result = 2 * (a2 ^ 1u) - 1;
 - Nếu `a2 = 0`    
   → result = +1 (phát xuôi)
 Hàm này chỉ quyết định nhạc chạy xuôi hay chạy ngược. Nhìn lại hàm ```sub_140003860```  thì mình thấy chương trình đang truyền giá trị `a2 = 1` dẫn đến việc âm thanh phát ra bị hỏng
-#### Phân tích hàm sub_140003A20
+### Phân tích hàm sub_140003A20
 Nó đơn giản chỉ là ghi giá trị vào một biến trong struct của player.
 ```c
 *(_BYTE *)(a1 + 29) = a2;
@@ -58,7 +58,7 @@ Nó đơn giản chỉ là ghi giá trị vào một biến trong struct của p
 Trong hàm ```sub_140003860```, nó cũng truyền `1`.
 => Kết quả là khi nhấn Play, chương trình đang phát ngược nhạc và bật pitch effect => âm thanh bị hỏng
 Vậy ý tưởng ở đây để cho âm thanh chạy đúng và lấy được flag thì ta chỉ cần patch giá trị truyền vào từ 1 -> 0 ở cả 2 hàm
-#### Patch chương trình
+### Patch chương trình
 Trước:
 ```asm
 mov     dl, 1
@@ -83,5 +83,8 @@ lưu lại và chạy lại chương trình mà mình đã patch thì ta sẽ l�
 CMO{y0u_g0t_r1ckr0ll3d}
 ```
 
-# Connected
+## Connected
+### Tổng quan
+Mình rất là thích challenge này (tại nó liên quan đến mạng :3, kì học này mình cũng đang học mạng máy tính hẹ hẹ). Nhìn chung thì challenge này mô phỏng 1 hệ thống mạng nội bộ gồm switch, router và PC, mỗi PC có một callback xử lý packet riêng. Chương trình cho người dùng nhập một message và địa chỉ IP đích, sau đó gửi packet từ một PC nguồn đi qua hệ thống mạng theo bảng định tuyến. Message sẽ được gửi tới một PC trung tâm và vượt qua một chuỗi kiểm tra . Nếu tất cả điều kiện đều đúng, message sẽ được chuyển đến máy tạo flag và gửi ngược về máy in.
+
 
