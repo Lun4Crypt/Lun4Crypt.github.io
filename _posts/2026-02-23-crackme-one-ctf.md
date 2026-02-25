@@ -86,5 +86,7 @@ CMO{y0u_g0t_r1ckr0ll3d}
 ## Connected
 ### Tổng quan
 Mình rất là thích challenge này (tại nó liên quan đến mạng :3, kì học này mình cũng đang học mạng máy tính hẹ hẹ). Nhìn chung thì challenge này mô phỏng 1 hệ thống mạng nội bộ gồm switch, router và PC, mỗi PC có một callback xử lý packet riêng. Chương trình cho người dùng nhập một message và địa chỉ IP đích, sau đó gửi packet từ một PC nguồn đi qua hệ thống mạng theo bảng định tuyến. Message sẽ được gửi tới một PC trung tâm và vượt qua một chuỗi kiểm tra . Nếu tất cả điều kiện đều đúng, message sẽ được chuyển đến máy tạo flag và gửi ngược về máy in.
+Giờ mình sẽ phân tích cách hệ thống hoạt động và gửi flag về như thế nào bằng IDA
+
 
 
